@@ -8,8 +8,11 @@ module.exports = (env) => {
 
 		output: {
 			path: path.join(__dirname, '/dist'),
-			filename: '[name].bundle.js'
+			filename: '[name].bundle.js',
+			sourceMapFilename: "[name].js.map",
 		},
+
+		devtool: "source-map",
 
 		devServer: {
 			port: env.port,
