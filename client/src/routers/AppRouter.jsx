@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import AccountPage from "../pages/AccountPage";
 import UsersPage from "../pages/admin/UsersPage";
@@ -12,17 +12,17 @@ import SignUpPage from "../pages/SignUpPage";
 export default function AppRouter() {
     return (
         <BrowserRouter>
-            <Switch>
-                <Route exact path="/" component={HomePage}/>
-                <Route exact path="/signup" component={SignUpPage}/>
-                <Route exact path="/signin" component={SignInPage}/>
-                <Route exact path="/account" component={AccountPage}/>
-                <Route exact path="/projects" component={ProjectsPage}/>
-                <Route exact path="/project/:projectId" component={ProjectPage}/>
-                <Route exact path="/admin/users" component={UsersPage}/>
+            <Routes>
+                <Route exact path="/" element={HomePage}/>
+                <Route exact path="/signup" element={SignUpPage}/>
+                <Route exact path="/signin" element={SignInPage}/>
+                <Route exact path="/account" element={AccountPage}/>
+                <Route exact path="/projects" element={ProjectsPage}/>
+                <Route exact path="/project/:projectId" element={ProjectPage}/>
+                <Route exact path="/admin/users" element={UsersPage}/>
 
-                <Route exact path="*" component={NotFoundPage}/>
-            </Switch>
+                <Route exact path="*" element={NotFoundPage}/>
+            </Routes>
         </BrowserRouter>
     )
 }
