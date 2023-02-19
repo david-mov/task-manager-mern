@@ -1,15 +1,9 @@
-import React, {Component} from 'react'
+import AppRouter from './routers/AppRouter'
 
-class App extends Component {
-
-	render() {
-		return (
-			<div>
-				<h1>Hello World!</h1>
-			</div>
-		)
-	}
-
+export default function App() {
+	return (
+		<>
+			<AppRouter/>
+		</>
+	)
 }
-
-export default App
