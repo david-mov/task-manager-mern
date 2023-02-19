@@ -1,4 +1,7 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import * as React from 'react';
+import { Routes, Route } from "react-router-dom";
+
+import Navigation from "../components/Navigation";
 
 import AccountPage from "../pages/AccountPage";
 import UsersPage from "../pages/admin/UsersPage";
@@ -11,18 +14,20 @@ import SignUpPage from "../pages/SignUpPage";
 
 export default function AppRouter() {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route exact path="/" element={HomePage}/>
-                <Route exact path="/signup" element={SignUpPage}/>
-                <Route exact path="/signin" element={SignInPage}/>
-                <Route exact path="/account" element={AccountPage}/>
-                <Route exact path="/projects" element={ProjectsPage}/>
-                <Route exact path="/project/:projectId" element={ProjectPage}/>
-                <Route exact path="/admin/users" element={UsersPage}/>
+        <>
+            <Navigation />
 
-                <Route exact path="*" element={NotFoundPage}/>
+            <Routes>
+                <Route exact path="/" element={<HomePage />}/>
+                <Route exact path="/signup" element={<SignUpPage />}/>
+                <Route exact path="/signin" element={<SignInPage />}/>
+                <Route exact path="/account" element={<AccountPage />}/>
+                <Route exact path="/projects" element={<ProjectsPage />}/>
+                <Route exact path="/project/:projectId" element={<ProjectPage />}/>
+                <Route exact path="/admin/users" element={<UsersPage />}/>
+
+                <Route path="*" element={<NotFoundPage />}/>
             </Routes>
-        </BrowserRouter>
+        </>
     )
 }
