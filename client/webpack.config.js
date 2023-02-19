@@ -29,17 +29,21 @@ module.exports = (env) => {
 					test: /\.jsx?$/,
 					exclude: /node_modules/,
 					resolve: {
-	        			extensions: [".js", ".jsx"]
-	      			},
+		        		extensions: [".js", ".jsx"]
+		      		},
 					use: {
 						loader: 'babel-loader',
 						options: {
 							presets: ['@babel/preset-env', '@babel/preset-react']
 						}
 					}
+				},
+				{
+					test: /\.css$/,
+					use: ['style-loader','css-loader']
 				}
 			]
-		}
+		},
 	}
 
 }
