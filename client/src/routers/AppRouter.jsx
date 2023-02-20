@@ -18,13 +18,13 @@ export default function AppRouter() {
             <Navigation />
 
             <Routes>
-                <Route exact path="/" element={<HomePage />}/>
-                <Route exact path="/signup" element={<SignUpPage />}/>
-                <Route exact path="/signin" element={<SignInPage />}/>
-                <Route exact path="/account" element={<AccountPage />}/>
-                <Route exact path="/projects" element={<ProjectsPage />}/>
-                <Route exact path="/project/:projectId" element={<ProjectPage />}/>
-                <Route exact path="/admin/users" element={<UsersPage />}/>
+                <Route path="/" element={<HomePage />}/>
+                <Route path="signup" element={<SignUpPage />}/>
+                <Route path="signin" element={<SignInPage />}/>
+                <Route path="account" element={<AccountPage />}/>
+                <Route path="projects" element={<ProjectsPage />}/>
+                <Route path="/project/:projectId" element={<ProjectPage />}/>
+                <Route path="/admin/users" element={<UsersPage />}/>
 
                 <Route path="*" element={<NotFoundPage />}/>
             </Routes>
