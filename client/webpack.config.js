@@ -11,6 +11,7 @@ module.exports = (env) => {
 			path: path.join(__dirname, '/dist'),
 			filename: '[name].bundle.js',
 			sourceMapFilename: "[name].js.map",
+			publicPath: '/'
 		},
 
 		devtool: "source-map",
