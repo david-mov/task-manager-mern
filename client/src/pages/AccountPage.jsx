@@ -2,6 +2,8 @@ import * as React from 'react';
 
 export default function AccountPage() {
     return (
-        <></>
+        <div>
+            <h1>Account page</h1>
+        </div>
     )
 }
