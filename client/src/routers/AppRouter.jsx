@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { Routes, Route } from "react-router-dom";
+import {
+    createBrowserRouter,
+    createRoutesFromElements,
+    Route,
+    RouterProvider,
+} from "react-router-dom";
 
 import Privatizing from '../components/routing/Privatizing';
 
@@ -14,22 +19,22 @@ import ProjectsPage from "../pages/ProjectsPage";
 import SignInPage from "../pages/SignInPage";
 import SignUpPage from "../pages/SignUpPage";
 
-export default function AppRouter() {
-    return (
-        <>
-            <Routes>
-                <Route path="/" element={<AppLayout />} >
-                    <Route index element={<HomePage />} />
-                    <Route path="signup" element={<SignUpPage />} />
-                    <Route path="signin" element={<SignInPage />} />
-                    <Route path="account" element={<Privatizing element={<AccountPage />} />} />
-                    <Route path="projects" element={<Privatizing element={<ProjectsPage />} />} />
-                    <Route path="/project/:projectId" element={<Privatizing element={<ProjectPage />} />} />
-                    <Route path="/admin/users" element={<Privatizing element={<UsersPage />} />} />
+const router = createBrowserRouter(
+    createRoutesFromElements(
+        <Route path="/" element={<AppLayout />} >
+            <Route index element={<HomePage />} />
+            <Route path="signup" element={<SignUpPage />} />
+            <Route path="signin" element={<SignInPage />} />
+            <Route path="account" element={<Privatizing element={<AccountPage />} />} />
+            <Route path="projects" element={<Privatizing element={<ProjectsPage />} />} />
+            <Route path="/project/:projectId" element={<Privatizing element={<ProjectPage />} />} />
+            <Route path="/admin/users" element={<Privatizing element={<UsersPage />} />} />
 
-                    <Route path="*" element={<NotFoundPage />} />
-                </Route>
-            </Routes>
-        </>
+            <Route path="*" element={<NotFoundPage />} />
+        </Route>
     )
+)
+
+export default function AppRouter() {
+    return <RouterProvider router={router} />
 }
