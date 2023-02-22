@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Routes, Route } from "react-router-dom";
 
-import RequireAuth from '../components/routing/RequireAuth';
+import Privatizing from '../components/routing/Privatizing';
 
 import AppLayout from "../components/layout/AppLayout";
 
@@ -22,10 +22,10 @@ export default function AppRouter() {
                     <Route index element={<HomePage />} />
                     <Route path="signup" element={<SignUpPage />} />
                     <Route path="signin" element={<SignInPage />} />
-                    <Route path="account" element={<RequireAuth element={<AccountPage />} />} />
-                    <Route path="projects" element={<RequireAuth element={<ProjectsPage />} />} />
-                    <Route path="/project/:projectId" element={<RequireAuth element={<ProjectPage />} />} />
-                    <Route path="/admin/users" element={<RequireAuth element={<UsersPage />} />} />
+                    <Route path="account" element={<Privatizing element={<AccountPage />} />} />
+                    <Route path="projects" element={<Privatizing element={<ProjectsPage />} />} />
+                    <Route path="/project/:projectId" element={<Privatizing element={<ProjectPage />} />} />
+                    <Route path="/admin/users" element={<Privatizing element={<UsersPage />} />} />
 
                     <Route path="*" element={<NotFoundPage />} />
                 </Route>
