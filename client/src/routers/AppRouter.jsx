@@ -29,7 +29,7 @@ const router = createBrowserRouter(
             <Route path="account" element={<Private element={<AccountPage />} />} />
             <Route path="projects" element={<Private element={<ProjectsPage />} />} />
             <Route path="/project/:projectId" element={<Private element={<ProjectPage />} />} />
-            <Route path="/admin/users" element={<Private element={<UsersPage />} />} />
+            <Route path="/admin/users" element={<Private role="admin" element={<UsersPage />} />} />
 
             <Route path="*" element={<NotFoundPage />} />
         </Route>
