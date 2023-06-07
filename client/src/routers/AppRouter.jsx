@@ -6,6 +6,8 @@ import {
     RouterProvider,
 } from "react-router-dom";
 
+import {roles} from '../helpers/roles'
+
 import Private from '../components/routing/Private';
 import Public from '../components/routing/Public';
 
@@ -29,7 +31,7 @@ const router = createBrowserRouter(
             <Route path="account" element={<Private element={<AccountPage />} />} />
             <Route path="projects" element={<Private element={<ProjectsPage />} />} />
             <Route path="/project/:projectId" element={<Private element={<ProjectPage />} />} />
-            <Route path="/admin/users" element={<Private role="admin" element={<UsersPage />} />} />
+            <Route path="/admin/users" element={<Private role={roles.admin} element={<UsersPage />} />} />
 
             <Route path="*" element={<NotFoundPage />} />
         </Route>
