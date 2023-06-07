@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import {roles} from '../helpers/roles'
+import {routes} from '../helpers/routes'
 
 import Private from '../components/routing/Private';
 import Public from '../components/routing/Public';
@@ -24,14 +25,14 @@ import SignUpPage from "../pages/SignUpPage";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" element={<AppLayout />} >
+        <Route path={routes.home} element={<AppLayout />} >
             <Route index element={<Public element={<HomePage />} />} />
-            <Route path="signup" element={<Public element={<SignUpPage />} />} />
-            <Route path="signin" element={<Public element={<SignInPage />} />} />
-            <Route path="account" element={<Private element={<AccountPage />} />} />
-            <Route path="projects" element={<Private element={<ProjectsPage />} />} />
-            <Route path="/project/:projectId" element={<Private element={<ProjectPage />} />} />
-            <Route path="/admin/users" element={<Private role={roles.admin} element={<UsersPage />} />} />
+            <Route path={routes.signup} element={<Public element={<SignUpPage />} />} />
+            <Route path={routes.signin} element={<Public element={<SignInPage />} />} />
+            <Route path={routes.account} element={<Private element={<AccountPage />} />} />
+            <Route path={routes.projects} element={<Private element={<ProjectsPage />} />} />
+            <Route path={routes.project()} element={<Private element={<ProjectPage />} />} />
+            <Route path={routes.admin.users} element={<Private role={roles.admin} element={<UsersPage />} />} />
 
             <Route path="*" element={<NotFoundPage />} />
         </Route>
