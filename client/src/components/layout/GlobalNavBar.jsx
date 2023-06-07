@@ -1,9 +1,12 @@
 import * as React from 'react';
 import {Nav, Navbar, NavDropdown} from 'react-bootstrap'
 import {NavLink} from 'react-router-dom'
+import useAuth from '../../hooks/useAuth'
 import {routes} from '../../helpers/routes'
 
 export default function GlobalNavBar() {
+    const {signout} = useAuth()
+
     return (
         <Navbar collapseOnSelect expand='lg' variant='dark' bg='dark' >
             <Navbar.Brand as={NavLink} to={routes.home}>Task Manager</Navbar.Brand>
@@ -18,6 +21,7 @@ export default function GlobalNavBar() {
                 <Nav>
                     <Nav.Link as={NavLink} to={routes.signin}>Sign-in</Nav.Link>
                     <Nav.Link as={NavLink} to={routes.signup}>Sign-up</Nav.Link>
+                    <Nav.Link onClick={signout} to={routes.home}>Sign-out</Nav.Link>
                     <Nav.Link as={NavLink} to={routes.account}>Account</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
