@@ -1,12 +1,13 @@
 import * as React from 'react'
 import { Navigate } from "react-router-dom";
 import useAuth from '../../hooks/useAuth';
+import {routes} from '../../helpers/routes'
 
 export default function Public({ element }) {
-  let {user} = useAuth()
+  let {isAuthenticated} = useAuth()
 
-  if (user) {
-    return <Navigate to="/projects" />;
+  if (isAuthenticated()) {
+    return <Navigate to={routes.projects} />;
   } else {
     return element;
   }
