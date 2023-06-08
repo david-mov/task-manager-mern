@@ -8,7 +8,12 @@ export default function AuthProvider({children}) {
     const [user, setUser] = React.useState(null)
 
     const signin = (userCredentials, fromLocation, navigate) => {
-        setUser({id: 1, role: roles.regular})
+        setUser({
+            id: 1, 
+            role: roles.regular,
+            name: 'Larry',
+            email: 'larry@email.com'
+        })
         navigate(fromLocation, {replace: true})
     }
 
