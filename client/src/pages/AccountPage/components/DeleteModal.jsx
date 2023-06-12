@@ -1,0 +1,32 @@
+import React from 'react'
+import {Modal, Alert, Button} from 'react-bootstrap'
+import useAuth from '../../../hooks/useAuth'
+
+const DeleteModal = ({isOpen, handleClose}) => {
+
+    const {signout} = useAuth()
+
+    const handleDelete = () => {
+        // Workaround ─ HTTP Request
+        signout()
+    }
+
+    return (
+        <Modal show={isOpen} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>Delete account</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Alert variant="danger">
+                    Are you sure you want to delete your account permanently? <b> All your data will be lost.</b>
+                </Alert>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="danger" onClick={handleDelete}>Delete account</Button>
+                <Button variant="secondary" onClick={handleClose}>Cancel</Button>
+            </Modal.Footer>
+        </Modal>
+  )
+}
+
+export default DeleteModal
