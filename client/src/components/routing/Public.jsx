@@ -1,15 +1,19 @@
 import * as React from 'react'
-import { Navigate } from "react-router-dom";
-import useAuth from '../../hooks/useAuth';
-import {routes} from '../../helpers/routes'
+import PropTypes from 'prop-types'
+import { Navigate } from 'react-router-dom'
+import useAuth from '../../hooks/useAuth'
+import { routes } from '../../helpers/routes'
 
 export default function Public({ element }) {
-  let {isAuthenticated} = useAuth()
+  const { isAuthenticated } = useAuth()
 
   if (isAuthenticated()) {
-    return <Navigate to={routes.projects} />;
+    return <Navigate to={routes.projects} />
   } else {
-    return element;
+    return element
   }
-  
+}
+
+Public.propTypes = {
+  element: PropTypes.element.isRequired,
 }

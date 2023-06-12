@@ -1,9 +1,9 @@
-import * as React from 'react';
+import * as React from 'react'
 
 export default function ProjectsPage() {
-    return (
-        <div>
-            <h1>Projects page</h1>
-        </div>
-    )
+  return (
+    <div>
+      <h1>Projects page</h1>
+    </div>
+  )
 }
