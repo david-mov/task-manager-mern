@@ -9,7 +9,7 @@ const ChangePassModal = ({ isOpen, handleClose }) => {
     handleSubmit,
     register,
     formState: { errors },
-    reset
+    reset,
   } = useForm({ resolver: changePassResolver })
 
   const onSubmit = (formData) => {
@@ -33,14 +33,12 @@ const ChangePassModal = ({ isOpen, handleClose }) => {
             <Form.Label>Current password</Form.Label>
             <Form.Control
               placeholder='Insert your current password'
-              {...register('currentpass')} 
+              {...register('currentpass')}
               type='password'
             />
             {errors.currentpass && (
               <Form.Text>
-                <Alert variant='danger'>
-                  {errors.currentpass.message}
-                </Alert>
+                <Alert variant='danger'>{errors.currentpass.message}</Alert>
               </Form.Text>
             )}
           </Form.Group>
@@ -49,14 +47,12 @@ const ChangePassModal = ({ isOpen, handleClose }) => {
             <Form.Label>New password</Form.Label>
             <Form.Control
               placeholder='Insert your new password'
-              {...register('newpass')} 
+              {...register('newpass')}
               type='password'
             />
             {errors.newpass && (
               <Form.Text>
-                <Alert variant='danger'>
-                  {errors.newpass.message}
-                </Alert>
+                <Alert variant='danger'>{errors.newpass.message}</Alert>
               </Form.Text>
             )}
           </Form.Group>
@@ -65,14 +61,12 @@ const ChangePassModal = ({ isOpen, handleClose }) => {
             <Form.Label>Confirm new password</Form.Label>
             <Form.Control
               placeholder='Insert your new password again'
-              {...register('confirmedpass')} 
+              {...register('confirmedpass')}
               type='password'
             />
             {errors.confirmedpass && (
               <Form.Text>
-                <Alert variant='danger'>
-                  {errors.confirmedpass.message}
-                </Alert>
+                <Alert variant='danger'>{errors.confirmedpass.message}</Alert>
               </Form.Text>
             )}
           </Form.Group>
