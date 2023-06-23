@@ -1,14 +1,16 @@
 import * as React from 'react'
 import { Container, Row, Col, Button, Card } from 'react-bootstrap'
 import useAuth from '../../hooks/useAuth'
+import useModal from '../../hooks/useModal'
 import DeleteModal from './components/DeleteModal'
+import ChangePassModal from './components/ChangePassModal'
 
 export default function AccountPage() {
   const { user } = useAuth()
 
-  const [isOpenDeleteModal, setIsOpenDeleteModal] = React.useState(false)
-  const openDeleteModal = () => setIsOpenDeleteModal(true)
-  const closeDeleteModal = () => setIsOpenDeleteModal(false)
+  const [isOpenDeleteModal, openDeleteModal, closeDeleteModal] = useModal()
+  const [isOpenChangePassModal, openChangePassModal, closeChangePassModal] =
+    useModal()
 
   return (
     <>
@@ -44,7 +46,11 @@ export default function AccountPage() {
               <div>
                 <Button>Edit account</Button>
               </div>
-              <Button variant='link' className='mt-3'>
+              <Button
+                variant='link'
+                className='mt-3'
+                onClick={openChangePassModal}
+              >
                 Change password
               </Button>
               <Button
@@ -59,6 +65,10 @@ export default function AccountPage() {
         </Row>
       </Container>
       <DeleteModal isOpen={isOpenDeleteModal} handleClose={closeDeleteModal} />
+      <ChangePassModal
+        isOpen={isOpenChangePassModal}
+        handleClose={closeChangePassModal}
+      />
     </>
   )
 }
