@@ -52,20 +52,24 @@ export default function AccountPage() {
                   Edit account
                 </Button>
               </div>
-              <Button
-                variant='link'
-                className='mt-3'
-                onClick={openChangePassModal}
-              >
-                Change password
-              </Button>
-              <Button
-                variant='link'
-                className='my-2 text-danger'
-                onClick={openDeleteModal}
-              >
-                Delete account
-              </Button>
+              <div>
+                <Button
+                  variant='link'
+                  className='mt-3'
+                  onClick={openChangePassModal}
+                >
+                  Change password
+                </Button>
+              </div>
+              <div>
+                <Button
+                  variant='link'
+                  className='my-2 text-danger'
+                  onClick={openDeleteModal}
+                >
+                  Delete account
+                </Button>
+              </div>
             </Card>
           </Col>
         </Row>
