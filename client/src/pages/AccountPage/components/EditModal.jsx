@@ -3,24 +3,38 @@ import PropTypes from 'prop-types'
 import { Modal, Form, Button, Alert } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import editAccountResolver from '../../../validations/editAccountResolver'
+import useAuth from '../../../hooks/useAuth'
 
-const EditModal = ({ isOpen, handleClose, user }) => {
+const EditModal = ({ isOpen, handleClose }) => {
+  const {user, updateUser} = useAuth()
+
   const {
     handleSubmit,
     register,
-    formState: { errors },
+    formState: { errors, isDirty, dirtyFields },
     reset,
-  } = useForm({ resolver: editAccountResolver })
+  } = useForm({ 
+    resolver: editAccountResolver,
+    defaultValues: {
+      name: user.name,
+      email: user.email
+    }
+  })
 
   const onSubmit = (formData) => {
-    // Workaround ─ HTTP request to the back-end
-    console.log(formData)
+    if (isDirty) {
+      const updatedFields = {}
+      for (const prop in dirtyFields) {
+        updatedFields[prop] = formData[prop]
+      }
+      updateUser(updatedFields)
+    }
     handleClose()
   }
 
   React.useEffect(() => {
     if (isOpen && user) reset({
-      username: user.name,
+      name: user.name,
       email: user.email
     })
   }, [isOpen])
@@ -36,11 +50,11 @@ const EditModal = ({ isOpen, handleClose, user }) => {
             <Form.Label>Change username</Form.Label>
             <Form.Control
               placeholder='Type your new username'
-              {...register('username')}
+              {...register('name')}
             />
-            {errors.username && (
+            {errors.name && (
               <Form.Text>
-                <Alert variant='danger'>{errors.username.message}</Alert>
+                <Alert variant='danger'>{errors.name.message}</Alert>
               </Form.Text>
             )}
           </Form.Group>
@@ -60,7 +74,7 @@ const EditModal = ({ isOpen, handleClose, user }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={handleSubmit(onSubmit)}>Update Account</Button>
+        <Button onClick={handleSubmit(onSubmit)} disabled={!isDirty}>Update Account</Button>
         <Button variant='secondary' onClick={handleClose}>
           Cancel
         </Button>

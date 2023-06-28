@@ -19,6 +19,14 @@ export default function AuthProvider({ children }) {
 
   const signout = () => setUser(null)
 
+  const updateUser = (data) => {
+    // Workaround ─ HTTP request to the back-end
+    setUser({
+      ...user,
+      ...data
+     })
+  }
+
   const isAuthenticated = () => !!user
   const hasRole = (role) => !role || user?.role === role
 
@@ -28,6 +36,7 @@ export default function AuthProvider({ children }) {
     signout,
     isAuthenticated,
     hasRole,
+    updateUser
   }
 
   return (

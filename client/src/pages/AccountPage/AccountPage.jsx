@@ -72,7 +72,7 @@ export default function AccountPage() {
       </Container>
       <DeleteModal isOpen={isOpenDeleteModal} handleClose={closeDeleteModal} />
       <ChangePassModal isOpen={isOpenChangePassModal} handleClose={closeChangePassModal} />
-      <EditModal isOpen={isOpenEditModal} handleClose={closeEditModal} user={user} />
+      <EditModal isOpen={isOpenEditModal} handleClose={closeEditModal} />
     </>
   )
 }
