@@ -4,6 +4,7 @@ import useAuth from '../../hooks/useAuth'
 import useModal from '../../hooks/useModal'
 import DeleteModal from './components/DeleteModal'
 import ChangePassModal from './components/ChangePassModal'
+import EditModal from './components/EditModal'
 
 export default function AccountPage() {
   const { user } = useAuth()
@@ -11,6 +12,7 @@ export default function AccountPage() {
   const [isOpenDeleteModal, openDeleteModal, closeDeleteModal] = useModal()
   const [isOpenChangePassModal, openChangePassModal, closeChangePassModal] =
     useModal()
+  const [isOpenEditModal, openEditModal, closeEditModal] = useModal()
 
   return (
     <>
@@ -44,7 +46,11 @@ export default function AccountPage() {
               </p>
 
               <div>
-                <Button>Edit account</Button>
+                <Button
+                  onClick={openEditModal}
+                >
+                  Edit account
+                </Button>
               </div>
               <Button
                 variant='link'
@@ -65,10 +71,8 @@ export default function AccountPage() {
         </Row>
       </Container>
       <DeleteModal isOpen={isOpenDeleteModal} handleClose={closeDeleteModal} />
-      <ChangePassModal
-        isOpen={isOpenChangePassModal}
-        handleClose={closeChangePassModal}
-      />
+      <ChangePassModal isOpen={isOpenChangePassModal} handleClose={closeChangePassModal} />
+      <EditModal isOpen={isOpenEditModal} handleClose={closeEditModal} user={user} />
     </>
   )
 }
