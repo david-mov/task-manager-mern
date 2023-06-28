@@ -23,8 +23,8 @@ export default function AuthProvider({ children }) {
     // Workaround ─ HTTP request to the back-end
     setUser({
       ...user,
-      ...data
-     })
+      ...data,
+    })
   }
 
   const isAuthenticated = () => !!user
@@ -36,7 +36,7 @@ export default function AuthProvider({ children }) {
     signout,
     isAuthenticated,
     hasRole,
-    updateUser
+    updateUser,
   }
 
   return (

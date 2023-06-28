@@ -6,19 +6,19 @@ import editAccountResolver from '../../../validations/editAccountResolver'
 import useAuth from '../../../hooks/useAuth'
 
 const EditModal = ({ isOpen, handleClose }) => {
-  const {user, updateUser} = useAuth()
+  const { user, updateUser } = useAuth()
 
   const {
     handleSubmit,
     register,
     formState: { errors, isDirty, dirtyFields },
     reset,
-  } = useForm({ 
+  } = useForm({
     resolver: editAccountResolver,
     defaultValues: {
       name: user.name,
-      email: user.email
-    }
+      email: user.email,
+    },
   })
 
   const onSubmit = (formData) => {
@@ -33,10 +33,11 @@ const EditModal = ({ isOpen, handleClose }) => {
   }
 
   React.useEffect(() => {
-    if (isOpen && user) reset({
-      name: user.name,
-      email: user.email
-    })
+    if (isOpen && user)
+      reset({
+        name: user.name,
+        email: user.email,
+      })
   }, [isOpen])
 
   return (
@@ -74,7 +75,9 @@ const EditModal = ({ isOpen, handleClose }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={handleSubmit(onSubmit)} disabled={!isDirty}>Update Account</Button>
+        <Button onClick={handleSubmit(onSubmit)} disabled={!isDirty}>
+          Update Account
+        </Button>
         <Button variant='secondary' onClick={handleClose}>
           Cancel
         </Button>
@@ -86,7 +89,7 @@ const EditModal = ({ isOpen, handleClose }) => {
 EditModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
-  user: PropTypes.object
+  user: PropTypes.object,
 }
 
 export default EditModal

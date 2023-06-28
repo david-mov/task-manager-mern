@@ -14,7 +14,8 @@ export default function AccountPage() {
   const [isOpenChangePassModal, openChangePassModal, closeChangePassModal] =
     useModal()
   const [isOpenEditModal, openEditModal, closeEditModal] = useModal()
-  const [isOpenProfilePicModal, openProfilePicModal, closeProfilePicModal] = useModal()
+  const [isOpenProfilePicModal, openProfilePicModal, closeProfilePicModal] =
+    useModal()
 
   return (
     <>
@@ -29,8 +30,8 @@ export default function AccountPage() {
                 height: '200px',
                 borderRadius: '50%',
                 objectFit: 'cover',
-                cursor: 'pointer'
-              }} 
+                cursor: 'pointer',
+              }}
               onClick={openProfilePicModal}
             />
           </Col>
@@ -50,11 +51,7 @@ export default function AccountPage() {
               </p>
 
               <div>
-                <Button
-                  onClick={openEditModal}
-                >
-                  Edit account
-                </Button>
+                <Button onClick={openEditModal}>Edit account</Button>
               </div>
               <div>
                 <Button
@@ -79,9 +76,15 @@ export default function AccountPage() {
         </Row>
       </Container>
       <DeleteModal isOpen={isOpenDeleteModal} handleClose={closeDeleteModal} />
-      <ChangePassModal isOpen={isOpenChangePassModal} handleClose={closeChangePassModal} />
+      <ChangePassModal
+        isOpen={isOpenChangePassModal}
+        handleClose={closeChangePassModal}
+      />
       <EditModal isOpen={isOpenEditModal} handleClose={closeEditModal} />
-      <ProfilePicModal isOpen={isOpenProfilePicModal} handleClose={closeProfilePicModal} />
+      <ProfilePicModal
+        isOpen={isOpenProfilePicModal}
+        handleClose={closeProfilePicModal}
+      />
     </>
   )
 }

@@ -8,7 +8,7 @@ const schema = yup.object().shape({
   email: yup
     .string('The email must be a text')
     .email('You must enter a valid email')
-    .required('The email field cannot be left empty')
+    .required('The email field cannot be left empty'),
 })
 
 export default yupResolver(schema)
