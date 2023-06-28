@@ -32,7 +32,7 @@ const ChangePassModal = ({ isOpen, handleClose }) => {
           <Form.Group>
             <Form.Label>Current password</Form.Label>
             <Form.Control
-              placeholder='Insert your current password'
+              placeholder='Type your current password'
               {...register('currentpass')}
               type='password'
             />
@@ -46,7 +46,7 @@ const ChangePassModal = ({ isOpen, handleClose }) => {
           <Form.Group>
             <Form.Label>New password</Form.Label>
             <Form.Control
-              placeholder='Insert your new password'
+              placeholder='Type your new password'
               {...register('newpass')}
               type='password'
             />
@@ -60,7 +60,7 @@ const ChangePassModal = ({ isOpen, handleClose }) => {
           <Form.Group>
             <Form.Label>Confirm new password</Form.Label>
             <Form.Control
-              placeholder='Insert your new password again'
+              placeholder='Retype your new password again'
               {...register('confirmedpass')}
               type='password'
             />
