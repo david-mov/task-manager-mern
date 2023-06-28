@@ -60,7 +60,7 @@ const ChangePassModal = ({ isOpen, handleClose }) => {
           <Form.Group>
             <Form.Label>Confirm new password</Form.Label>
             <Form.Control
-              placeholder='Retype your new password again'
+              placeholder='Retype your new password'
               {...register('confirmedpass')}
               type='password'
             />
