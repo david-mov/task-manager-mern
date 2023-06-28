@@ -5,6 +5,7 @@ import useModal from '../../hooks/useModal'
 import DeleteModal from './components/DeleteModal'
 import ChangePassModal from './components/ChangePassModal'
 import EditModal from './components/EditModal'
+import ProfilePicModal from './components/ProfilePicModal'
 
 export default function AccountPage() {
   const { user } = useAuth()
@@ -13,6 +14,7 @@ export default function AccountPage() {
   const [isOpenChangePassModal, openChangePassModal, closeChangePassModal] =
     useModal()
   const [isOpenEditModal, openEditModal, closeEditModal] = useModal()
+  const [isOpenProfilePicModal, openProfilePicModal, closeProfilePicModal] = useModal()
 
   return (
     <>
@@ -20,14 +22,16 @@ export default function AccountPage() {
         <Row className='mt-4 d-flex justify-content-center'>
           <Col xs={12} className='text-center'>
             <img
-              src='/img/male_avatar.svg'
+              src={user?.profilePic || '/img/male_avatar.svg'}
               alt='profile'
               style={{
                 width: '200px',
                 height: '200px',
                 borderRadius: '50%',
                 objectFit: 'cover',
-              }}
+                cursor: 'pointer'
+              }} 
+              onClick={openProfilePicModal}
             />
           </Col>
           <Col xs={12} sm={8} md={6} lg={4} className='mt-4'>
@@ -77,6 +81,7 @@ export default function AccountPage() {
       <DeleteModal isOpen={isOpenDeleteModal} handleClose={closeDeleteModal} />
       <ChangePassModal isOpen={isOpenChangePassModal} handleClose={closeChangePassModal} />
       <EditModal isOpen={isOpenEditModal} handleClose={closeEditModal} />
+      <ProfilePicModal isOpen={isOpenProfilePicModal} handleClose={closeProfilePicModal} />
     </>
   )
 }
