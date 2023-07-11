@@ -10,3 +10,8 @@ export const routes = {
     users: '/admin/users',
   },
 }
+
+export const externalLinks = {
+  github: 'https:/github.com/david-mov',
+  linkedin: 'https:/linkedin.com/in/david-mov'
+}
