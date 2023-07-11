@@ -17,7 +17,7 @@ const confirmedPasswordString = () => {
         test: (confirmedpass) => !!pass && pass === confirmedpass,
         message: 'The password and its confirmation must be equals',
       })
-  })
+    })
 }
 
 const emailString = () => {

@@ -24,7 +24,7 @@ export default function SignInPage() {
   const onSubmit = (formData) => {
     // Workaround ─ HTTP request to the back-end
     console.log(formData)
-    signin({/* User credentials */}, location.state?.from, navigate)
+    signin(userCredentials, location.state?.from, navigate)
   }
 
   return (
