@@ -10,10 +10,20 @@ export default function GlobalFooter() {
         <Navbar.Toggle />
         <Navbar.Collapse className='justify-content-end'>
           <Nav>
-            <Nav.Link className='d-none d-lg-block' href={externalLinks.github} target="_blank" rel="noopener noreferrer">
+            <Nav.Link
+              className='d-none d-lg-block'
+              href={externalLinks.github}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               Visit my GitHub
             </Nav.Link>
-            <Nav.Link className='d-none d-lg-block' href={externalLinks.linkedin} target="_blank" rel="noopener noreferrer">
+            <Nav.Link
+              className='d-none d-lg-block'
+              href={externalLinks.linkedin}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               Visit my LinkedIn
             </Nav.Link>
           </Nav>
