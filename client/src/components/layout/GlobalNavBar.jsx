@@ -5,7 +5,7 @@ import useAuth from '../../hooks/useAuth'
 import { routes } from '../../helpers/routes'
 
 export default function GlobalNavBar() {
-  const { signout } = useAuth()
+  const { isAuthenticated, hasRole, signout } = useAuth()
 
   return (
     <Navbar collapseOnSelect expand='lg' variant='dark' bg='dark'>
@@ -18,25 +18,34 @@ export default function GlobalNavBar() {
           <Nav.Link as={NavLink} to={routes.projects}>
             Projects
           </Nav.Link>
-          <NavDropdown title='Admin'>
-            <NavDropdown.Item as={NavLink} to={routes.admin.users}>
-              Users
-            </NavDropdown.Item>
-          </NavDropdown>
+          {isAuthenticated() && hasRole('admin') && (
+            <NavDropdown title='Admin'>
+              <NavDropdown.Item as={NavLink} to={routes.admin.users}>
+                Users
+              </NavDropdown.Item>
+            </NavDropdown>
+          )}
         </Nav>
         <Nav>
-          <Nav.Link as={NavLink} to={routes.signin}>
-            Sign-in
-          </Nav.Link>
-          <Nav.Link as={NavLink} to={routes.signup}>
-            Sign-up
-          </Nav.Link>
-          <Nav.Link onClick={signout} to={routes.home}>
-            Sign-out
-          </Nav.Link>
-          <Nav.Link as={NavLink} to={routes.account}>
-            Account
-          </Nav.Link>
+          {isAuthenticated() ? (
+            <>
+              <Nav.Link onClick={signout} to={routes.home}>
+                Sign-out
+              </Nav.Link>
+              <Nav.Link as={NavLink} to={routes.account}>
+                Account
+              </Nav.Link>
+            </>
+          ) : (
+            <>
+              <Nav.Link as={NavLink} to={routes.signin}>
+                Sign-in
+              </Nav.Link>
+              <Nav.Link as={NavLink} to={routes.signup}>
+                Sign-up
+              </Nav.Link>
+            </>
+          )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
