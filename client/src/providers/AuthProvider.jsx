@@ -10,7 +10,7 @@ export default function AuthProvider({ children }) {
   const signin = (userCredentials, fromLocation, navigate) => {
     setUser({
       id: 1,
-      role: roles.regular,
+      role: roles.admin,
       name: 'Larry',
       email: 'larry@email.com',
     })
