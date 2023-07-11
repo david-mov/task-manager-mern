@@ -13,5 +13,5 @@ export const routes = {
 
 export const externalLinks = {
   github: 'https:/github.com/david-mov',
-  linkedin: 'https:/linkedin.com/in/david-mov'
+  linkedin: 'https:/linkedin.com/in/david-mov',
 }
