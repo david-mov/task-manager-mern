@@ -5,10 +5,10 @@ import GlobalFooter from './GlobalFooter'
 
 export default function AppLayout() {
   return (
-    <div>
+    <>
       <GlobalNavBar />
       <Outlet />
       <GlobalFooter />
-    </div>
+    </>
   )
 }

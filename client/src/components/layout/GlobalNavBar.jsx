@@ -8,7 +8,7 @@ export default function GlobalNavBar() {
   const { isAuthenticated, hasRole, signout } = useAuth()
 
   return (
-    <Navbar collapseOnSelect expand='lg' variant='dark' bg='dark'>
+    <Navbar collapseOnSelect expand='lg' variant='dark' bg='dark' fixed='top'>
       <Navbar.Brand as={NavLink} to={routes.home}>
         Task Manager
       </Navbar.Brand>

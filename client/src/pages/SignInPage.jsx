@@ -29,7 +29,9 @@ export default function SignInPage() {
 
   return (
     <Container>
-      <Row className='mt-5'>
+      <Row
+        style={{ height: '100%', paddingTop: '5rem', paddingBottom: '5rem' }}
+      >
         <Col md={{ span: 6, offset: 3 }} className='text-center'>
           <Card className='mw-50 p-3 text-start'>
             <h2>Sign in</h2>
