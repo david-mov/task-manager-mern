@@ -25,7 +25,7 @@ const emailString = () => {
     .string('The email must be a text')
     .email('You must enter a valid email')
     .required('The email field cannot be left empty')
-    /* .test(
+  /* .test(
       'email-availability',
       'This email is already in use',
       async (email) => {
