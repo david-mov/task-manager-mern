@@ -31,11 +31,11 @@ export default function GlobalNavBar() {
         <Nav>
           {isAuthenticated() ? (
             <>
-              <Nav.Link onClick={signout} to={routes.home}>
-                Sign-out
-              </Nav.Link>
               <Nav.Link as={NavLink} to={routes.account}>
                 Account
+              </Nav.Link>
+              <Nav.Link onClick={signout} to={routes.home}>
+                Sign-out
               </Nav.Link>
             </>
           ) : (
