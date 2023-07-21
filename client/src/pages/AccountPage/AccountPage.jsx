@@ -19,11 +19,9 @@ export default function AccountPage() {
 
   return (
     <>
-      <Container>
-        <Row
-          style={{ height: '100%', paddingTop: '5rem', paddingBottom: '5rem' }}
-        >
-          <Col xs={12} className='text-center'>
+      <Container style={{ height: '100%', paddingTop: '5rem', paddingBottom: '5rem' }}>
+        <Row>
+          <Col className='text-center'>
             <img
               src={user?.profilePic || '/img/male_avatar.svg'}
               alt='profile'
@@ -37,7 +35,9 @@ export default function AccountPage() {
               onClick={openProfilePicModal}
             />
           </Col>
-          <Col xs={12} sm={8} md={6} lg={4} className='mt-5'>
+        </Row>
+        <Row className='justify-content-center'>
+          <Col className='mt-5' xs={12} sm={8} md={6} lg={4}>
             <Card className='mw-50 p-3 text-center'>
               <p>
                 <b>Name: </b>
