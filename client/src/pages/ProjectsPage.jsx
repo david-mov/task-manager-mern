@@ -85,7 +85,9 @@ export default function ProjectsPage() {
   ]
 
   return (
-    <Container style={{ height: '100%', paddingTop: '5rem', paddingBottom: '5rem' }}>
+    <Container
+      style={{ height: '100%', paddingTop: '5rem', paddingBottom: '5rem' }}
+    >
       <Row>
         <Col>
           <h2>Your projects</h2>
@@ -116,7 +118,9 @@ export default function ProjectsPage() {
                 <Card.Text>{project.description}</Card.Text>
               </Card.Body>
               <Card.Footer>
-                <small className='text-muted'>Last updated {compareDate(project.lastUpdate).text} ago</small>
+                <small className='text-muted'>
+                  Last updated {compareDate(project.lastUpdate).text} ago
+                </small>
               </Card.Footer>
             </Card>
           </Col>
