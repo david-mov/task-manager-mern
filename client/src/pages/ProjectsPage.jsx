@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { Container, Row, Col, Card } from 'react-bootstrap'
+import { Container, Row, Col, Card, Button } from 'react-bootstrap'
+import { compareDate } from '../helpers/compareDate'
 
 export default function ProjectsPage() {
   const fakeCards = [
@@ -7,7 +8,7 @@ export default function ProjectsPage() {
       id: 1,
       title: 'card 1',
       description: 'description 1',
-      lastUpdate: new Date('2011/02/07 15:13:06'),
+      lastUpdate: new Date('2023/02/07 15:13:06'),
     },
     {
       id: 2,
@@ -84,10 +85,18 @@ export default function ProjectsPage() {
   ]
 
   return (
-    <Container>
-      <Row
-        style={{ height: '100%', paddingTop: '5rem', paddingBottom: '5rem' }}
-      >
+    <Container style={{ height: '100%', paddingTop: '5rem', paddingBottom: '5rem' }}>
+      <Row>
+        <Col>
+          <h2>Your projects</h2>
+        </Col>
+        <Col>
+          <div className='d-flex justify-content-end'>
+            <Button>Create a new project</Button>
+          </div>
+        </Col>
+      </Row>
+      <Row>
         {fakeCards.map((project) => (
           <Col
             key={project.id}
@@ -103,16 +112,11 @@ export default function ProjectsPage() {
                 className='p-3'
               />
               <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the cards content.
-                </Card.Text>
-                <Card.Link href='#'>Card Link</Card.Link>
-                <Card.Link href='#'>Another Link</Card.Link>
+                <Card.Title>{project.title}</Card.Title>
+                <Card.Text>{project.description}</Card.Text>
               </Card.Body>
               <Card.Footer>
-                <small className='text-muted'>Last updated 3 mins ago</small>
+                <small className='text-muted'>Last updated {compareDate(project.lastUpdate).text} ago</small>
               </Card.Footer>
             </Card>
           </Col>
