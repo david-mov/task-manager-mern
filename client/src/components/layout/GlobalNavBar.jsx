@@ -15,9 +15,11 @@ export default function GlobalNavBar() {
       <Navbar.Toggle aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
         <Nav className='me-auto'>
-          <Nav.Link as={NavLink} to={routes.projects}>
-            Projects
-          </Nav.Link>
+          {isAuthenticated() && (
+            <Nav.Link as={NavLink} to={routes.projects}>
+              Projects
+            </Nav.Link>
+          )}
           {isAuthenticated() && hasRole('admin') && (
             <NavDropdown title='Admin'>
               <NavDropdown.Item as={NavLink} to={routes.admin.users}>
