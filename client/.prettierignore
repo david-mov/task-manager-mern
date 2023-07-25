@@ -1,2 +1,5 @@
 dist
 package-lock.json
+.eslintignore
+.prettierignore
+.husky
