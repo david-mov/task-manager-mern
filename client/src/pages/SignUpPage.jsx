@@ -33,11 +33,11 @@ export default function SignUpPage() {
                   placeholder='Type your username'
                   {...register('username')}
                 />
-                {errors.username && (
+                {errors.username ? (
                   <Form.Text>
                     <Alert variant='danger'>{errors.username.message}</Alert>
                   </Form.Text>
-                )}
+                ) : null}
               </Form.Group>
               <br />
               <Form.Group>
@@ -46,11 +46,11 @@ export default function SignUpPage() {
                   placeholder='Type your email'
                   {...register('email')}
                 />
-                {errors.email && (
+                {errors.email ? (
                   <Form.Text>
                     <Alert variant='danger'>{errors.email.message}</Alert>
                   </Form.Text>
-                )}
+                ) : null}
               </Form.Group>
               <br />
               <Form.Group>
@@ -60,11 +60,11 @@ export default function SignUpPage() {
                   {...register('pass')}
                   type='password'
                 />
-                {errors.pass && (
+                {errors.pass ? (
                   <Form.Text>
                     <Alert variant='danger'>{errors.pass.message}</Alert>
                   </Form.Text>
-                )}
+                ) : null}
               </Form.Group>
               <br />
               <Form.Group>
@@ -74,13 +74,13 @@ export default function SignUpPage() {
                   {...register('confirmedpass')}
                   type='password'
                 />
-                {errors.confirmedpass && (
+                {errors.confirmedpass ? (
                   <Form.Text>
                     <Alert variant='danger'>
                       {errors.confirmedpass.message}
                     </Alert>
                   </Form.Text>
-                )}
+                ) : null}
               </Form.Group>
             </Form>
             <br />

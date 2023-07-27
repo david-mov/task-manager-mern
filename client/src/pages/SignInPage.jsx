@@ -43,11 +43,11 @@ export default function SignInPage() {
                   placeholder='Type your email'
                   {...register('email')}
                 />
-                {errors.email && (
+                {errors.email ? (
                   <Form.Text>
                     <Alert variant='danger'>{errors.email.message}</Alert>
                   </Form.Text>
-                )}
+                ) : null}
               </Form.Group>
               <br />
               <Form.Group>
@@ -57,11 +57,11 @@ export default function SignInPage() {
                   {...register('pass')}
                   type='password'
                 />
-                {errors.pass && (
+                {errors.pass ? (
                   <Form.Text>
                     <Alert variant='danger'>{errors.pass.message}</Alert>
                   </Form.Text>
-                )}
+                ) : null}
               </Form.Group>
             </Form>
             <br />

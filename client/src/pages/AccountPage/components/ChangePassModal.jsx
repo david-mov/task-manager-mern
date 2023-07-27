@@ -36,11 +36,11 @@ const ChangePassModal = ({ isOpen, handleClose }) => {
               {...register('currentpass')}
               type='password'
             />
-            {errors.currentpass && (
+            {errors.currentpass ? (
               <Form.Text>
                 <Alert variant='danger'>{errors.currentpass.message}</Alert>
               </Form.Text>
-            )}
+            ) : null}
           </Form.Group>
           <br />
           <Form.Group>
@@ -50,11 +50,11 @@ const ChangePassModal = ({ isOpen, handleClose }) => {
               {...register('newpass')}
               type='password'
             />
-            {errors.newpass && (
+            {errors.newpass ? (
               <Form.Text>
                 <Alert variant='danger'>{errors.newpass.message}</Alert>
               </Form.Text>
-            )}
+            ) : null}
           </Form.Group>
           <br />
           <Form.Group>
@@ -64,11 +64,11 @@ const ChangePassModal = ({ isOpen, handleClose }) => {
               {...register('confirmedpass')}
               type='password'
             />
-            {errors.confirmedpass && (
+            {errors.confirmedpass ? (
               <Form.Text>
                 <Alert variant='danger'>{errors.confirmedpass.message}</Alert>
               </Form.Text>
-            )}
+            ) : null}
           </Form.Group>
         </Form>
       </Modal.Body>

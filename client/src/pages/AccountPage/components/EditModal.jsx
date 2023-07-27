@@ -53,11 +53,11 @@ const EditModal = ({ isOpen, handleClose }) => {
               placeholder='Type your new username'
               {...register('name')}
             />
-            {errors.name && (
+            {errors.name ? (
               <Form.Text>
                 <Alert variant='danger'>{errors.name.message}</Alert>
               </Form.Text>
-            )}
+            ) : null}
           </Form.Group>
           <br />
           <Form.Group>
@@ -66,11 +66,11 @@ const EditModal = ({ isOpen, handleClose }) => {
               placeholder='Type your new email'
               {...register('email')}
             />
-            {errors.email && (
+            {errors.email ? (
               <Form.Text>
                 <Alert variant='danger'>{errors.email.message}</Alert>
               </Form.Text>
-            )}
+            ) : null}
           </Form.Group>
         </Form>
       </Modal.Body>
