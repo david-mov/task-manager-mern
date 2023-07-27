@@ -105,10 +105,16 @@ export default function ProjectsPage() {
 
   const navigate = useNavigate()
 
-  function handlePagination({ page: pageNumber }) {
+  const handlePagination = ({ page: pageNumber }) => {
     return navigate({
       pathname: '/projects',
       search: `?page=${pageNumber}`,
+    })
+  }
+
+  const navigateToProject = (id) => {
+    return navigate({
+      pathname: `/projects/${id}`,
     })
   }
 
@@ -140,7 +146,11 @@ export default function ProjectsPage() {
                   md={{ span: 4 }}
                   lg={{ span: 3 }}
                 >
-                  <Card className='m-2'>
+                  <Card
+                    className='m-2'
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => navigateToProject(project.id)}
+                  >
                     <Card.Img
                       variant='top'
                       src='img/projects-card.svg'
