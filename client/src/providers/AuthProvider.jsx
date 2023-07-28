@@ -20,12 +20,12 @@ export default function AuthProvider({ children }) {
 
   const signout = () => setUser(null)
 
-  const updateUser = (data) => {
+  const updateUser = (newData) => {
     // Workaround ─ HTTP request to the back-end
-    setUser({
-      ...user,
-      ...data,
-    })
+    setUser((prevUserData) => ({
+      ...prevUserData,
+      ...newData,
+    }))
   }
 
   const authApi = React.useMemo(
