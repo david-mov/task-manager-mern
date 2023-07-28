@@ -1,9 +1,10 @@
 import * as React from 'react'
-import { Container, Row, Col, Card, Button, Pagination } from 'react-bootstrap'
+import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { compareDate } from '../../helpers/compareDate'
 import useModal from '../../hooks/useModal'
 import CreateProjectModal from './components/CreateProjectModal'
+import PaginationBar from './components/PaginationBar'
 
 export default function ProjectsPage() {
   const [
@@ -171,83 +172,15 @@ export default function ProjectsPage() {
             </Row>
             <Row>
               <Col className='d-flex justify-content-center mt-3'>
-                <Pagination className='m-0'>
-                  {projects.hasPrevPage && (
-                    <Pagination.Prev
-                      onClick={() =>
-                        handlePagination({ page: projects.prevPage })
-                      }
-                    />
-                  )}
-                  {projects.page > 3 && (
-                    <Pagination.Item
-                      onClick={() => handlePagination({ page: 1 })}
-                    >
-                      {1}
-                    </Pagination.Item>
-                  )}
-                  {projects.page > 4 && <Pagination.Ellipsis />}
-
-                  {projects.page > 2 && (
-                    <Pagination.Item
-                      onClick={() =>
-                        handlePagination({ page: projects.page - 2 })
-                      }
-                    >
-                      {projects.page - 2}
-                    </Pagination.Item>
-                  )}
-                  {projects.hasPrevPage && (
-                    <Pagination.Item
-                      onClick={() =>
-                        handlePagination({ page: projects.prevPage })
-                      }
-                    >
-                      {projects.prevPage}
-                    </Pagination.Item>
-                  )}
-
-                  <Pagination.Item active>{projects.page}</Pagination.Item>
-
-                  {projects.hasNextPage && (
-                    <Pagination.Item
-                      onClick={() =>
-                        handlePagination({ page: projects.nextPage })
-                      }
-                    >
-                      {projects.nextPage}
-                    </Pagination.Item>
-                  )}
-                  {projects.totalPages > projects.page + 1 && (
-                    <Pagination.Item
-                      onClick={() =>
-                        handlePagination({ page: projects.page + 2 })
-                      }
-                    >
-                      {projects.page + 2}
-                    </Pagination.Item>
-                  )}
-
-                  {projects.totalPages > projects.page + 3 && (
-                    <Pagination.Ellipsis />
-                  )}
-                  {projects.totalPages > projects.page + 2 && (
-                    <Pagination.Item
-                      onClick={() =>
-                        handlePagination({ page: projects.totalPages })
-                      }
-                    >
-                      {projects.totalPages}
-                    </Pagination.Item>
-                  )}
-                  {projects.hasNextPage && (
-                    <Pagination.Next
-                      onClick={() =>
-                        handlePagination({ page: projects.nextPage })
-                      }
-                    />
-                  )}
-                </Pagination>
+                <PaginationBar
+                  handlePagination={handlePagination}
+                  page={projects.page}
+                  totalPages={projects.totalPages}
+                  hasPrevPage={projects.hasPrevPage}
+                  hasNextPage={projects.hasNextPage}
+                  prevPage={projects.prevPage}
+                  nextPage={projects.nextPage}
+                />
               </Col>
             </Row>
           </>
