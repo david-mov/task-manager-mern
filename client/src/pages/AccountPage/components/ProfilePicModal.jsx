@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Modal, Form, Button } from 'react-bootstrap'
-import useAuth from '../../../hooks/useAuth'
+import useAuthApi from '../../../hooks/useAuthApi'
 import { toast } from 'react-toastify'
 
 const ProfilePicModal = ({ isOpen, handleClose }) => {
-  const { updateUser } = useAuth()
+  const { updateUser } = useAuthApi()
 
   const [selectedFile, setSelectedFile] = React.useState(null)
 

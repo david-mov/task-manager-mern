@@ -1,11 +1,13 @@
 import * as React from 'react'
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
-import useAuth from '../../hooks/useAuth'
 import { routes } from '../../helpers/routes'
+import useAuthApi from '../../hooks/useAuthApi'
+import useAuthState from '../../hooks/useAuthState'
 
 export default function GlobalNavBar() {
-  const { isAuthenticated, hasRole, signout } = useAuth()
+  const { isAuthenticated, hasRole } = useAuthState()
+  const { signout } = useAuthApi()
 
   return (
     <Navbar collapseOnSelect expand='lg' variant='dark' bg='dark' fixed='top'>

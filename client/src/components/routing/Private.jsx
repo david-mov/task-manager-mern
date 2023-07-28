@@ -1,11 +1,11 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { Navigate, useLocation } from 'react-router-dom'
-import useAuth from '../../hooks/useAuth'
+import useAuthState from '../../hooks/useAuthState'
 import { routes } from '../../helpers/routes'
 
 export default function Private({ role, element }) {
-  const { hasRole, isAuthenticated } = useAuth()
+  const { hasRole, isAuthenticated } = useAuthState()
 
   const location = useLocation()
 

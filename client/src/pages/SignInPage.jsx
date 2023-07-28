@@ -5,12 +5,12 @@ import { useLocation, useNavigate, Link } from 'react-router-dom'
 
 import signInResolver from '../validations/signInResolver'
 import { routes } from '../helpers/routes'
-import useAuth from '../hooks/useAuth'
+import useAuthApi from '../hooks/useAuthApi'
 
 const userCredentials = {}
 
 export default function SignInPage() {
-  const { signin } = useAuth()
+  const { signin } = useAuthApi()
 
   const location = useLocation()
   const navigate = useNavigate()

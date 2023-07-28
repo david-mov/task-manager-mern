@@ -3,10 +3,12 @@ import PropTypes from 'prop-types'
 import { Modal, Form, Button, Alert } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import editAccountResolver from '../../../validations/editAccountResolver'
-import useAuth from '../../../hooks/useAuth'
+import useAuthState from '../../../hooks/useAuthState'
+import useAuthApi from '../../../hooks/useAuthApi'
 
 const EditModal = ({ isOpen, handleClose }) => {
-  const { user, updateUser } = useAuth()
+  const { user } = useAuthState()
+  const { updateUser } = useAuthApi()
 
   const {
     handleSubmit,

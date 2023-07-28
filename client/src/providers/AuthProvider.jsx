@@ -2,7 +2,8 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { roles } from '../helpers/roles'
 
-export const AuthContext = React.createContext()
+export const AuthStateContext = React.createContext()
+export const AuthApiContext = React.createContext()
 
 export default function AuthProvider({ children }) {
   const [user, setUser] = React.useState(null)
@@ -27,20 +28,27 @@ export default function AuthProvider({ children }) {
     })
   }
 
-  const isAuthenticated = () => !!user
-  const hasRole = (role) => !role || user?.role === role
+  const authApi = React.useMemo(
+    () => ({
+      signin,
+      signout,
+      updateUser,
+    }),
+    [setUser]
+  )
 
-  const contextValue = {
+  const auth = {
     user,
-    signin,
-    signout,
-    isAuthenticated,
-    hasRole,
-    updateUser,
+    isAuthenticated: () => !!user,
+    hasRole: (role) => !role || user?.role === role,
   }
 
   return (
-    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
+    <AuthStateContext.Provider value={auth}>
+      <AuthApiContext.Provider value={authApi}>
+        {children}
+      </AuthApiContext.Provider>
+    </AuthStateContext.Provider>
   )
 }
 

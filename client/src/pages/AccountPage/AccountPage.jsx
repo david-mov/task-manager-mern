@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Container, Row, Col, Button, Card } from 'react-bootstrap'
-import useAuth from '../../hooks/useAuth'
+import useAuthState from '../../hooks/useAuthState'
 import useModal from '../../hooks/useModal'
 import DeleteModal from './components/DeleteModal'
 import ChangePassModal from './components/ChangePassModal'
@@ -8,7 +8,7 @@ import EditModal from './components/EditModal'
 import ProfilePicModal from './components/ProfilePicModal'
 
 export default function AccountPage() {
-  const { user } = useAuth()
+  const { user } = useAuthState()
 
   const [isOpenDeleteModal, openDeleteModal, closeDeleteModal] = useModal()
   const [isOpenChangePassModal, openChangePassModal, closeChangePassModal] =
