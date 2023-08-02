@@ -19,9 +19,7 @@ export default function AccountPage() {
 
   return (
     <>
-      <Container
-        style={{ height: '100%', paddingTop: '5rem', paddingBottom: '5rem' }}
-      >
+      <Container>
         <Row>
           <Col className='text-center'>
             <img

@@ -6,9 +6,7 @@ import { routes } from '../helpers/routes'
 export default function NotFoundPage() {
   return (
     <Container>
-      <Row
-        style={{ height: '100%', paddingTop: '5rem', paddingBottom: '5rem' }}
-      >
+      <Row>
         <Col md={{ span: 6, offset: 3 }} className='text-center'>
           <img
             className='w-100 p-3'

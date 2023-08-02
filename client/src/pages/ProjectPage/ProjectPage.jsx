@@ -49,9 +49,7 @@ export default function ProjectPage() {
 
   return (
     <>
-      <Container
-        style={{ height: '100%', paddingTop: '5rem', paddingBottom: '5rem' }}
-      >
+      <Container>
         <Row className='d-flex justify-content-center'>
           <Col lg='8'>
             <h2 className='mb-3'>{`Project ${projectId}`}</h2>

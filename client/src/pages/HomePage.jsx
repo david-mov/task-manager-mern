@@ -6,9 +6,7 @@ import { routes } from '../helpers/routes'
 export default function HomePage() {
   return (
     <Container>
-      <Row
-        style={{ height: '100%', paddingTop: '5rem', paddingBottom: '5rem' }}
-      >
+      <Row>
         <Col xs={{ span: 12 }} md={{ span: 6 }}>
           <h2>Welcome to Task Manager</h2>
           <br />

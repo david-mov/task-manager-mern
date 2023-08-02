@@ -121,9 +121,7 @@ export default function ProjectsPage() {
 
   return (
     <>
-      <Container
-        style={{ height: '100%', paddingTop: '5rem', paddingBottom: '5rem' }}
-      >
+      <Container>
         <Row>
           <Col>
             <h2>Your projects</h2>
