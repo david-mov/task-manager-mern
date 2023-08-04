@@ -9,14 +9,18 @@ const passwordString = () => {
 }
 
 const schema = yup.object().shape({
-  currentpass: passwordString(),
-  newpass: passwordString(),
-  confirmedpass: passwordString().when('newpass', ([newpass], schema) => {
-    return schema.test({
-      test: (confirmedpass) => !!newpass && newpass === confirmedpass,
-      message: 'The new password and its confirmation must be equals',
-    })
-  }),
+  currentPassword: passwordString(),
+  newPassword: passwordString(),
+  confirmedPassword: passwordString().when(
+    'newPassword',
+    ([newPassword], schema) => {
+      return schema.test({
+        test: (confirmedPassword) =>
+          !!newPassword && newPassword === confirmedPassword,
+        message: 'The new password and its confirmation must be equals',
+      })
+    }
+  ),
 })
 
 export default yupResolver(schema)

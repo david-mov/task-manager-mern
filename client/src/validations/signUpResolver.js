@@ -48,10 +48,10 @@ const nameString = () => {
 }
 
 const schema = yup.object().shape({
-  name: nameString(),
+  username: nameString(),
   email: emailString(),
-  pass: passwordString(),
-  confirmedpass: confirmedPasswordString(),
+  password: passwordString(),
+  confirmedPassword: confirmedPasswordString(),
 })
 
 export default yupResolver(schema)

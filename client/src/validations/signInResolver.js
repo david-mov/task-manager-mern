@@ -17,7 +17,7 @@ const emailString = () => {
 
 const schema = yup.object().shape({
   email: emailString(),
-  pass: passwordString(),
+  password: passwordString(),
 })
 
 export default yupResolver(schema)

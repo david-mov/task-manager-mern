@@ -2,7 +2,7 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 const schema = yup.object().shape({
-  name: yup
+  username: yup
     .string('The username must be a text')
     .required('The username field cannot be left empty'),
   email: yup
