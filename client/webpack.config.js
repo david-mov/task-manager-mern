@@ -1,6 +1,7 @@
 const path = require('node:path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const { SourceMapDevToolPlugin } = require('webpack')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = (env) => {
   return {
@@ -28,6 +29,7 @@ module.exports = (env) => {
       new SourceMapDevToolPlugin({
         filename: '[file].map',
       }),
+      new Dotenv(),
     ],
 
     module: {
