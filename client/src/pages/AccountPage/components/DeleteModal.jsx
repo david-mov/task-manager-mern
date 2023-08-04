@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Modal, Alert, Button } from 'react-bootstrap'
-import useAuthApi from '../../../hooks/useAuthApi'
+import useUserApi from '../../../hooks/useUserApi'
 
 const DeleteModal = ({ isOpen, handleClose }) => {
-  const { signout } = useAuthApi()
+  const { deleteAccount, signout } = useUserApi()
 
   const handleDelete = () => {
-    // Workaround ─ HTTP Request
+    deleteAccount()
     signout()
   }
 

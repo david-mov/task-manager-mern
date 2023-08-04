@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Modal, Form, Button } from 'react-bootstrap'
-import useAuthApi from '../../../hooks/useAuthApi'
+import useUserApi from '../../../hooks/useUserApi'
 import { toast } from 'react-toastify'
 
 const ProfilePicModal = ({ isOpen, handleClose }) => {
-  const { updateUser } = useAuthApi()
+  const { uploadPic } = useUserApi()
 
   const [selectedFile, setSelectedFile] = React.useState(null)
 
@@ -35,7 +35,7 @@ const ProfilePicModal = ({ isOpen, handleClose }) => {
 
   const handleUpdateProfilePic = () => {
     if (!selectedFile) return
-    updateUser({ profilePic: selectedFile })
+    uploadPic(selectedFile)
     handleClose()
   }
 

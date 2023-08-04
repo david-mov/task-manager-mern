@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Container, Row, Col, Button, Card } from 'react-bootstrap'
-import useAuthState from '../../hooks/useAuthState'
+import useUserState from '../../hooks/useUserState'
 import useModal from '../../hooks/useModal'
 import DeleteModal from './components/DeleteModal'
 import ChangePassModal from './components/ChangePassModal'
@@ -8,7 +8,7 @@ import EditModal from './components/EditModal'
 import ProfilePicModal from './components/ProfilePicModal'
 
 export default function AccountPage() {
-  const { user } = useAuthState()
+  const { user } = useUserState()
 
   const [isOpenDeleteModal, openDeleteModal, closeDeleteModal] = useModal()
   const [isOpenChangePassModal, openChangePassModal, closeChangePassModal] =
@@ -41,7 +41,7 @@ export default function AccountPage() {
             <Card className='mw-50 p-3 text-center'>
               <p>
                 <b>Name: </b>
-                {user.name}
+                {user.username}
               </p>
               <p>
                 <b>Email: </b>

@@ -5,12 +5,10 @@ import { useLocation, useNavigate, Link } from 'react-router-dom'
 
 import signInResolver from '../validations/signInResolver'
 import { routes } from '../helpers/routes'
-import useAuthApi from '../hooks/useAuthApi'
-
-const userCredentials = {}
+import useUserApi from '../hooks/useUserApi'
 
 export default function SignInPage() {
-  const { signin } = useAuthApi()
+  const { signin } = useUserApi()
 
   const location = useLocation()
   const navigate = useNavigate()
@@ -21,9 +19,7 @@ export default function SignInPage() {
     formState: { errors },
   } = useForm({ resolver: signInResolver })
 
-  const onSubmit = (formData) => {
-    // Workaround ─ HTTP request to the back-end
-    console.log(formData)
+  const onSubmit = (userCredentials) => {
     signin(userCredentials, location.state?.from, navigate)
   }
 
@@ -52,12 +48,12 @@ export default function SignInPage() {
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   placeholder='Type your password'
-                  {...register('pass')}
+                  {...register('password')}
                   type='password'
                 />
-                {errors.pass ? (
+                {errors.password ? (
                   <Form.Text>
-                    <Alert variant='danger'>{errors.pass.message}</Alert>
+                    <Alert variant='danger'>{errors.password.message}</Alert>
                   </Form.Text>
                 ) : null}
               </Form.Group>

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import { Modal, Form, Button, Alert } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import editAccountResolver from '../../../validations/editAccountResolver'
-import useAuthState from '../../../hooks/useAuthState'
-import useAuthApi from '../../../hooks/useAuthApi'
+import useUserState from '../../../hooks/useUserState'
+import useUserApi from '../../../hooks/useUserApi'
 
 const EditModal = ({ isOpen, handleClose }) => {
-  const { user } = useAuthState()
-  const { updateUser } = useAuthApi()
+  const { user } = useUserState()
+  const { updateInfo } = useUserApi()
 
   const {
     handleSubmit,
@@ -18,18 +18,18 @@ const EditModal = ({ isOpen, handleClose }) => {
   } = useForm({
     resolver: editAccountResolver,
     defaultValues: {
-      name: user.name,
+      username: user.username,
       email: user.email,
     },
   })
 
-  const onSubmit = (formData) => {
+  const onSubmit = (data) => {
     if (isDirty) {
       const updatedFields = {}
       for (const prop in dirtyFields) {
-        updatedFields[prop] = formData[prop]
+        updatedFields[prop] = data[prop]
       }
-      updateUser(updatedFields)
+      updateInfo(updatedFields)
     }
     handleClose()
   }
@@ -37,7 +37,7 @@ const EditModal = ({ isOpen, handleClose }) => {
   React.useEffect(() => {
     if (isOpen && user)
       reset({
-        name: user.name,
+        name: user.username,
         email: user.email,
       })
   }, [isOpen])
@@ -53,11 +53,11 @@ const EditModal = ({ isOpen, handleClose }) => {
             <Form.Label>Change username</Form.Label>
             <Form.Control
               placeholder='Type your new username'
-              {...register('name')}
+              {...register('username')}
             />
-            {errors.name ? (
+            {errors.username ? (
               <Form.Text>
-                <Alert variant='danger'>{errors.name.message}</Alert>
+                <Alert variant='danger'>{errors.username.message}</Alert>
               </Form.Text>
             ) : null}
           </Form.Group>

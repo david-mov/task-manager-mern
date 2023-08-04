@@ -3,8 +3,11 @@ import PropTypes from 'prop-types'
 import { Modal, Form, Button, Alert } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import changePassResolver from '../../../validations/changePassResolver'
+import useUserApi from '../../../hooks/useUserApi'
 
 const ChangePassModal = ({ isOpen, handleClose }) => {
+  const { changePassword } = useUserApi()
+
   const {
     handleSubmit,
     register,
@@ -12,9 +15,8 @@ const ChangePassModal = ({ isOpen, handleClose }) => {
     reset,
   } = useForm({ resolver: changePassResolver })
 
-  const onSubmit = (formData) => {
-    // Workaround ─ HTTP request to the back-end
-    console.log(formData)
+  const onSubmit = (data) => {
+    changePassword(data)
     handleClose()
   }
 
@@ -33,12 +35,12 @@ const ChangePassModal = ({ isOpen, handleClose }) => {
             <Form.Label>Current password</Form.Label>
             <Form.Control
               placeholder='Type your current password'
-              {...register('currentpass')}
+              {...register('currentPassword')}
               type='password'
             />
-            {errors.currentpass ? (
+            {errors.currentPassword ? (
               <Form.Text>
-                <Alert variant='danger'>{errors.currentpass.message}</Alert>
+                <Alert variant='danger'>{errors.currentPassword.message}</Alert>
               </Form.Text>
             ) : null}
           </Form.Group>
@@ -47,12 +49,12 @@ const ChangePassModal = ({ isOpen, handleClose }) => {
             <Form.Label>New password</Form.Label>
             <Form.Control
               placeholder='Type your new password'
-              {...register('newpass')}
+              {...register('newPassword')}
               type='password'
             />
-            {errors.newpass ? (
+            {errors.newPassword ? (
               <Form.Text>
-                <Alert variant='danger'>{errors.newpass.message}</Alert>
+                <Alert variant='danger'>{errors.newPassword.message}</Alert>
               </Form.Text>
             ) : null}
           </Form.Group>
@@ -61,12 +63,14 @@ const ChangePassModal = ({ isOpen, handleClose }) => {
             <Form.Label>Confirm new password</Form.Label>
             <Form.Control
               placeholder='Retype your new password'
-              {...register('confirmedpass')}
+              {...register('confirmedPassword')}
               type='password'
             />
-            {errors.confirmedpass ? (
+            {errors.confirmedPassword ? (
               <Form.Text>
-                <Alert variant='danger'>{errors.confirmedpass.message}</Alert>
+                <Alert variant='danger'>
+                  {errors.confirmedPassword.message}
+                </Alert>
               </Form.Text>
             ) : null}
           </Form.Group>

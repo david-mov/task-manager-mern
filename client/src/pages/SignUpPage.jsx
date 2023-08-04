@@ -4,17 +4,19 @@ import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import signUpResolver from '../validations/signUpResolver'
 import { routes } from '../helpers/routes'
+import useUserApi from '../hooks/useUserApi'
 
 export default function SignUpPage() {
+  const { signup } = useUserApi()
+
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm({ resolver: signUpResolver })
 
-  const onSubmit = (formData) => {
-    // Workaround ─ HTTP request to the back-end
-    console.log(formData)
+  const onSubmit = (userCredentials) => {
+    signup(userCredentials)
   }
 
   return (
@@ -55,12 +57,12 @@ export default function SignUpPage() {
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   placeholder='Type your password'
-                  {...register('pass')}
+                  {...register('password')}
                   type='password'
                 />
-                {errors.pass ? (
+                {errors.password ? (
                   <Form.Text>
-                    <Alert variant='danger'>{errors.pass.message}</Alert>
+                    <Alert variant='danger'>{errors.password.message}</Alert>
                   </Form.Text>
                 ) : null}
               </Form.Group>
@@ -69,13 +71,13 @@ export default function SignUpPage() {
                 <Form.Label>Confirm password</Form.Label>
                 <Form.Control
                   placeholder='Retype your password'
-                  {...register('confirmedpass')}
+                  {...register('confirmedPassword')}
                   type='password'
                 />
-                {errors.confirmedpass ? (
+                {errors.confirmedPassword ? (
                   <Form.Text>
                     <Alert variant='danger'>
-                      {errors.confirmedpass.message}
+                      {errors.confirmedPassword.message}
                     </Alert>
                   </Form.Text>
                 ) : null}
