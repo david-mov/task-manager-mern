@@ -2,12 +2,15 @@ import * as React from 'react'
 import { Container, Row, Col, Form, Alert, Button, Card } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
+
 import signUpResolver from '../validations/signUpResolver'
-import { routes } from '../helpers/routes'
-import useUserApi from '../hooks/useUserApi'
+import { routes } from '../helpers/consts/routes'
+import { useSignup } from '../context/StoreContext'
+import { useRedirectBack } from '../hooks/useRedirectBack'
 
 export default function SignUpPage() {
-  const { signup } = useUserApi()
+  const signup = useSignup()
+  const redirectBack = useRedirectBack()
 
   const {
     handleSubmit,
@@ -15,8 +18,8 @@ export default function SignUpPage() {
     formState: { errors },
   } = useForm({ resolver: signUpResolver })
 
-  const onSubmit = (userCredentials) => {
-    signup(userCredentials)
+  const onSubmit = (userData) => {
+    signup(userData, redirectBack)
   }
 
   return (

@@ -1,13 +1,17 @@
 import * as React from 'react'
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
-import { routes } from '../../helpers/routes'
-import useAuthApi from '../../hooks/useAuthApi'
-import useAuthState from '../../hooks/useAuthState'
+import { routes } from '../../helpers/consts/routes'
+import {
+  useIsAuthenticated,
+  useHasRole,
+  useSignout,
+} from '../../context/StoreContext'
 
 export default function GlobalNavBar() {
-  const { isAuthenticated, hasRole } = useAuthState()
-  const { signout } = useAuthApi()
+  const isAuthenticated = useIsAuthenticated()
+  const hasRole = useHasRole()
+  const signout = useSignout()
 
   return (
     <div style={{ marginBottom: '5rem' }}>

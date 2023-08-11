@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Modal, Form, Button } from 'react-bootstrap'
-import useUserApi from '../../../hooks/useUserApi'
+import { useUploadProfilePic } from '../../../context/StoreContext'
 import { toast } from 'react-toastify'
 
 const ProfilePicModal = ({ isOpen, handleClose }) => {
-  const { uploadPic } = useUserApi()
+  const uploadPic = useUploadProfilePic()
 
   const [selectedFile, setSelectedFile] = React.useState(null)
 

@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Modal, Alert, Button } from 'react-bootstrap'
-import useUserApi from '../../../hooks/useUserApi'
+import { useDeleteAccount, useSignout } from '../../../context/StoreContext'
 
 const DeleteModal = ({ isOpen, handleClose }) => {
-  const { deleteAccount, signout } = useUserApi()
+  const deleteAccount = useDeleteAccount()
+  const signout = useSignout()
 
   const handleDelete = () => {
     deleteAccount()

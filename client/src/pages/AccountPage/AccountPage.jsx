@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Container, Row, Col, Button, Card } from 'react-bootstrap'
-import useUserState from '../../hooks/useUserState'
+import { useUser } from '../../context/StoreContext'
 import useModal from '../../hooks/useModal'
 import DeleteModal from './components/DeleteModal'
 import ChangePassModal from './components/ChangePassModal'
@@ -8,7 +8,7 @@ import EditModal from './components/EditModal'
 import ProfilePicModal from './components/ProfilePicModal'
 
 export default function AccountPage() {
-  const { user } = useUserState()
+  const user = useUser()
 
   const [isOpenDeleteModal, openDeleteModal, closeDeleteModal] = useModal()
   const [isOpenChangePassModal, openChangePassModal, closeChangePassModal] =
@@ -23,7 +23,7 @@ export default function AccountPage() {
         <Row>
           <Col className='text-center'>
             <img
-              src={user?.profilePic || '/img/male_avatar.svg'}
+              src={user?.profilePicUrl || '/img/male_avatar.svg'}
               alt='profile'
               style={{
                 width: '200px',

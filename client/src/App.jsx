@@ -1,15 +1,15 @@
 import * as React from 'react'
 import AppRouter from './routers/AppRouter'
-import UserProvider from './providers/UserProvider'
+import { StoreContextProvider } from './context/StoreContext'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 export default function App() {
   return (
     <>
-      <UserProvider>
+      <StoreContextProvider>
         <AppRouter />
-      </UserProvider>
+      </StoreContextProvider>
       <ToastContainer />
     </>
   )

@@ -1,17 +1,16 @@
 import * as React from 'react'
 import { Container, Row, Col, Form, Alert, Button, Card } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
-import { useLocation, useNavigate, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import signInResolver from '../validations/signInResolver'
-import { routes } from '../helpers/routes'
-import useUserApi from '../hooks/useUserApi'
+import { routes } from '../helpers/consts/routes'
+import { useRedirectBack } from '../hooks/useRedirectBack'
+import { useSignin } from '../context/StoreContext'
 
 export default function SignInPage() {
-  const { signin } = useUserApi()
-
-  const location = useLocation()
-  const navigate = useNavigate()
+  const signin = useSignin()
+  const redirectBack = useRedirectBack()
 
   const {
     handleSubmit,
@@ -20,7 +19,7 @@ export default function SignInPage() {
   } = useForm({ resolver: signInResolver })
 
   const onSubmit = (userCredentials) => {
-    signin(userCredentials, location.state?.from, navigate)
+    signin(userCredentials, redirectBack)
   }
 
   return (

@@ -1,6 +1,6 @@
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { prioritiesArray } from '../helpers/taskPriorities'
+import { prioritiesArray } from '../helpers/consts/taskPriorities'
 
 const validatePriorityRegex = new RegExp(prioritiesArray.join('|'), 'gi')
 

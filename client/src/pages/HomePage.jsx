@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { routes } from '../helpers/routes'
+import { routes } from '../helpers/consts/routes'
 
 export default function HomePage() {
   return (

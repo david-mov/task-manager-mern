@@ -6,8 +6,8 @@ import {
   RouterProvider,
 } from 'react-router-dom'
 
-import { roles } from '../helpers/roles'
-import { routes } from '../helpers/routes'
+import { roles } from '../helpers/consts/roles'
+import { routes } from '../helpers/consts/routes'
 
 import Private from '../components/routing/Private'
 import Public from '../components/routing/Public'

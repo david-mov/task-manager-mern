@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Modal, Form, Button, Alert } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import editTaskResolver from '../../../validations/editTaskResolver'
-import { prioritiesArray } from '../../../helpers/taskPriorities'
+import { prioritiesArray } from '../../../helpers/consts/taskPriorities'
 
 const EditTaskModal = ({ isOpen, handleClose }) => {
   const {

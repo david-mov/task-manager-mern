@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { Modal, Form, Button, Alert } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import changePassResolver from '../../../validations/changePassResolver'
-import useUserApi from '../../../hooks/useUserApi'
+import { useChangePassword } from '../../../context/StoreContext'
 
 const ChangePassModal = ({ isOpen, handleClose }) => {
-  const { changePassword } = useUserApi()
+  const changePassword = useChangePassword()
 
   const {
     handleSubmit,

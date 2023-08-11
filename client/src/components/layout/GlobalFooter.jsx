@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
-import { externalLinks } from '../../helpers/routes'
+import { externalLinks } from '../../helpers/consts/routes'
 
 export default function GlobalFooter() {
   return (

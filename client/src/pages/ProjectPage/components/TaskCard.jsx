@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, Button, Dropdown, DropdownButton } from 'react-bootstrap'
-import { statuses, statusesArray } from '../../../helpers/taskStatuses'
+import { statuses, statusesArray } from '../../../helpers/consts/taskStatuses'
 import PropTypes from 'prop-types'
 
 const TaskCard = ({
