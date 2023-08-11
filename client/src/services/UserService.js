@@ -1,85 +1,112 @@
 import axios from 'axios'
-import { headersForJSON, headersForImages } from '../helpers/http'
-import { serverBaseUrl, serverUsersEndpoint } from '../helpers/env'
+import { jsonHeaders, imageSendingHeaders } from '../helpers/consts/httpHeaders'
+import { env } from '../helpers/consts/env'
+
+const { serverBaseUrl, serverUsersEndpoint } = env
 
 export class UserService {
   constructor() {
     this.client = axios.create({
       baseURL: `${serverBaseUrl}${serverUsersEndpoint}`,
-      ...headersForJSON,
+      ...jsonHeaders,
       withCredentials: true,
     })
   }
 
   async getCurrentUser() {
-    const requestInfo = {
-      url: `/`,
+    try {
+      const requestInfo = {
+        method: 'get',
+        url: `/`,
+      }
+      const response = await this.client(requestInfo)
+      if (response.data.error) throw new Error(response.data)
+      return response.data
+    } catch (err) {
+      return {
+        error: true,
+        message:
+          err.errorMessage || 'Something went wrong! Please try again later.',
+      }
     }
-    const response = await this.client.get(requestInfo)
-    if (response.data.error) throw new Error(response.data)
-    if (response.status === 500)
-      throw new Error({
-        message: 'There was a problem in the system, please try again later',
-      })
-    return response.data
   }
 
   async updateInfo({ updatedFields }) {
-    const requestInfo = {
-      url: `/`,
-      body: updatedFields,
+    try {
+      const requestInfo = {
+        method: 'put',
+        url: `/`,
+        data: updatedFields,
+      }
+      const response = await this.client(requestInfo)
+      if (response.data.error) throw new Error(response.data)
+      return response.data
+    } catch (err) {
+      return {
+        error: true,
+        message:
+          err.errorMessage || 'Something went wrong! Please try again later.',
+      }
     }
-    const response = await this.client.put(requestInfo)
-    if (response.data.error) throw new Error(response.data)
-    if (response.status === 500)
-      throw new Error({
-        message: 'There was a problem in the system, please try again later',
-      })
-    return response.data
   }
 
   async uploadProfilePic({ image }) {
-    const requestInfo = {
-      url: `/profilePic`,
-      body: { file: image },
-      config: headersForImages,
+    try {
+      const requestInfo = {
+        method: 'post',
+        url: `/profilePic`,
+        data: { file: image },
+        ...imageSendingHeaders,
+      }
+      const response = await this.client(requestInfo)
+      if (response.data.error) throw new Error(response.data)
+      return response.data
+    } catch (err) {
+      return {
+        error: true,
+        message:
+          err.errorMessage || 'Something went wrong! Please try again later.',
+      }
     }
-    const response = await this.client.post(requestInfo)
-    if (response.data.error) throw new Error(response.data)
-    if (response.status === 500)
-      throw new Error({
-        message: 'There was a problem in the system, please try again later',
-      })
-    return response.data
   }
 
   async changePassword({ currentPassword, newPassword }) {
-    const requestInfo = {
-      url: `/changePassword`,
-      body: {
-        currentPassword,
-        newPassword,
-      },
+    try {
+      const requestInfo = {
+        method: 'put',
+        url: `/changePassword`,
+        data: {
+          currentPassword,
+          newPassword,
+        },
+      }
+      const response = await this.client(requestInfo)
+      if (response.data.error) throw new Error(response.data)
+      return response.data
+    } catch (err) {
+      return {
+        error: true,
+        message:
+          err.errorMessage || 'Something went wrong! Please try again later.',
+      }
     }
-    const response = await this.client.put(requestInfo)
-    if (response.data.error) throw new Error(response.data)
-    if (response.status === 500)
-      throw new Error({
-        message: 'There was a problem in the system, please try again later',
-      })
-    return response.data
   }
 
   async deleteAccount() {
-    const requestInfo = {
-      url: `/deleteAccount`,
+    try {
+      const requestInfo = {
+        method: 'delete',
+        url: `/deleteAccount`,
+      }
+      const response = await this.client(requestInfo)
+      if (response.data.error) throw new Error(response.data)
+      return response.data
+    } catch (err) {
+      return {
+        error: true,
+        message:
+          err.errorMessage || 'Something went wrong! Please try again later.',
+      }
     }
-    const response = await this.client.delete(requestInfo)
-    if (response.data.error) throw new Error(response.data)
-    if (response.status === 500)
-      throw new Error({
-        message: 'There was a problem in the system, please try again later',
-      })
-    return response.data
   }
 }

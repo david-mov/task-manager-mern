@@ -1,58 +1,75 @@
 import axios from 'axios'
-import { headersForJSON } from '../helpers/http'
-import { serverBaseUrl, serverAuthEndpoint } from '../helpers/env'
+import { jsonHeaders } from '../helpers/consts/httpHeaders'
+import { env } from '../helpers/consts/env'
+
+const { serverBaseUrl, serverAuthEndpoint } = env
 
 export class AuthService {
   constructor() {
     this.client = axios.create({
       baseURL: `${serverBaseUrl}${serverAuthEndpoint}`,
-      ...headersForJSON,
+      ...jsonHeaders,
       withCredentials: true,
     })
   }
 
   async signin({ email, password }) {
-    const requestInfo = {
-      url: `/signin`,
-      body: { email, password },
+    try {
+      const requestInfo = {
+        method: 'post',
+        url: `/signin`,
+        data: { email, password },
+      }
+      const response = await this.client(requestInfo)
+      if (response.data.error) throw new Error(response.data)
+      return response.data
+    } catch (err) {
+      return {
+        error: true,
+        message:
+          err.errorMessage || 'Something went wrong! Please try again later.',
+      }
     }
-    const response = await this.client.post(requestInfo)
-    if (response.data.error) throw new Error(response.data)
-    if (response.status === 500)
-      throw new Error({
-        message: 'There was a problem in the system, please try again later',
-      })
-    return response.data
   }
 
   async signup({ username, email, password }) {
-    const requestInfo = {
-      url: `/signup`,
-      body: {
-        username,
-        email,
-        password,
-      },
+    try {
+      const requestInfo = {
+        method: 'post',
+        url: `/signup`,
+        data: {
+          username,
+          email,
+          password,
+        },
+      }
+      const response = await this.client(requestInfo)
+      if (response.data.error) throw new Error(response.data)
+      return response.data
+    } catch (err) {
+      return {
+        error: true,
+        message:
+          err.errorMessage || 'Something went wrong! Please try again later.',
+      }
     }
-    const response = await this.client.post(requestInfo)
-    if (response.data.error) throw new Error(response.data)
-    if (response.status === 500)
-      throw new Error({
-        message: 'There was a problem in the system, please try again later',
-      })
-    return response.data
   }
 
   async signout() {
-    const requestInfo = {
-      url: `/signout`,
+    try {
+      const requestInfo = {
+        method: 'post',
+        url: `/signout`,
+      }
+      const response = await this.client(requestInfo)
+      if (response.data.error) throw new Error(response.data)
+      return response.data
+    } catch (err) {
+      return {
+        error: true,
+        message:
+          err.errorMessage || 'Something went wrong! Please try again later.',
+      }
     }
-    const response = await this.client.post(requestInfo)
-    if (response.data.error) throw new Error(response.data)
-    if (response.status === 500)
-      throw new Error({
-        message: 'There was a problem in the system, please try again later',
-      })
-    return response.data
   }
 }
